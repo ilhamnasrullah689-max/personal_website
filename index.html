@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ilham Nasrullah</title>
+
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<!-- Leaflet -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" 
+/>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<style>
+  body { background:#0b0b0c; }
+  .bone { color:#e8e6df; }
+  .gold { color:#d4af37; }
+
+  .float {
+    animation: float 8s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+  }
+</style>
+</head>
+
+<body class="bone flex justify-center">
+
+<!-- TITLE POJOK -->
+<div class="fixed top-6 left-6 z-50">
+  <h1 class="text-3xl font-semibold tracking-tight">
+    Ilham Nasrullah<span class="gold">.</span>
+  </h1>
+</div>
+
+<!-- CONTAINER -->
+<div class="w-full max-w-[420px] p-3 space-y-3 mt-24">
+
+  <!-- ROW 1 -->
+  <div class="flex gap-3">
+
+    <!-- LEFT -->
+    <div class="w-[60%] bg-zinc-900 rounded-2xl p-4 float space-y-2">
+      <h2 class="text-base font-medium">
+        Ilham Nasrullah
+      </h2>
+      <p class="text-sm text-zinc-400 leading-relaxed">
+        Software engineer.<br>
+        Laravel & Node.js.<br>
+        Build → break → fix.
+      </p>
+    </div>
+
+    <!-- MAP -->
+    <div class="w-[40%] bg-zinc-900 rounded-2xl overflow-hidden h-[140px] 
+float">
+      <div id="map" class="w-full h-full"></div>
+    </div>
+
+  </div>
+
+  <!-- ROW 2 -->
+  <div class="flex gap-3">
+
+    <!-- RESUME -->
+    <a href="resume.html"
+       class="w-[40%] bg-zinc-900 rounded-2xl p-4
+              flex items-center justify-between
+              hover:bg-zinc-800 transition">
+      <span class="text-zinc-400 text-sm">Resume</span>
+      <i data-lucide="arrow-up-right"></i>
+    </a>
+
+    <!-- ICONS -->
+    <div class="w-[60%] bg-zinc-900 rounded-2xl p-8
+                flex items-center justify-center gap-8">
+
+      <a href="mailto:ilhamnasrullah689@gmail.com"
+         class="hover:scale-110 transition">
+        <i data-lucide="mail" class="w-8 h-8 text-zinc-300"></i>
+      </a>
+
+      <a href="https://personalweb.com"
+         target="_blank"
+         class="hover:scale-110 transition">
+        <i data-lucide="globe" class="w-8 h-8 text-zinc-300"></i>
+      </a>
+
+      <a href="https://linkedin.com"
+         target="_blank"
+         class="hover:scale-110 transition">
+        <i data-lucide="linkedin" class="w-8 h-8 text-zinc-300"></i>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ROW 3 : SPOTIFY -->
+  <div class="bg-zinc-900 rounded-2xl overflow-hidden float">
+    <iframe
+      id="spotify"
+      title="Playlist"
+      class="w-full min-h-[360px]"
+      frameborder="0"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; 
+picture-in-picture"
+      loading="lazy">
+    </iframe>
+  </div>
+
+</div>
+
+<!-- ICON INIT -->
+<script>
+  lucide.createIcons();
+</script>
+
+<!-- SPOTIFY -->
+<script>
+  const playlistId = '6JS56x2WiOFv3VccXEiAcp';
+  document.getElementById('spotify').src =
+    `https://open.spotify.com/embed/playlist/${playlistId}?theme=0`;
+</script>
+
+<!-- MAP -->
+<script>
+  const map = L.map('map', {
+    zoomControl: false,
+    attributionControl: false
+  }).setView([-7.9666, 112.6326], 13);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
+    .addTo(map);
+
+  L.marker([-7.9666, 112.6326]).addTo(map);
+</script>
+
+</body>
+</html>
+
